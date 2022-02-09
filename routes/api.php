@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Requests\UserRegisterRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('/register', [App\Http\Controllers\API\AuthController::class, 'register'])->name('register');
+Route::post('/logout', [App\Http\Controllers\API\AuthController::class, 'logout'])->name('logout');
+Route::post('/login', [App\Http\Controllers\API\AuthController::class, 'login'])->name('login');
+
+Route::middleware('auth:sanctum')->get('/user', function (UserRegisterRequest $request) {
+    return $request->all();
 });
