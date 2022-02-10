@@ -31,7 +31,6 @@ class AuthController extends Controller
             return response()
                 ->json(['message' => 'Unauthorized'], 401);
         }
-
         $user = User::where('phone_number', $request['phone_number'])->firstOrFail();
         $token = $user->createToken('auth_token')->plainTextToken;
         return response()
@@ -41,7 +40,7 @@ class AuthController extends Controller
     // method for user logout and delete token
     public function logout()
     {
-        auth()->user()->tokens()->delete();
+        auth()->user()->currentAccessToken()->delete();
         return [
             'message' => 'You have successfully logged out and the token was successfully deleted'
         ];
