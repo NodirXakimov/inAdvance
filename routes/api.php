@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PlaceController;
 use App\Http\Requests\UserRegisterRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,4 +23,9 @@ Route::post('/login', [App\Http\Controllers\API\AuthController::class, 'login'])
 Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::post('/logout', [App\Http\Controllers\API\AuthController::class, 'logout'])->name('logout');
     Route::apiResource('/places', PlaceController::class);
+});
+
+Route::get('/test', function (){
+    $users = User::all();
+    return response()->json(['users' => $users]);
 });
