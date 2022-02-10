@@ -37,7 +37,7 @@
             @endif
 
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <object data="{{ asset('storage/progress-pana.svg') }}" width="600" height="600"> </object>
+                <object data="{{ asset('storage/progress-pana.svg') }}" width="100%" height="600"> </object>
             </div>
         </div>
     </body>
