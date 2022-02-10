@@ -17,11 +17,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/register', [App\Http\Controllers\API\AuthController::class, 'register'])->name('register');
-Route::post('/login', [App\Http\Controllers\API\AuthController::class, 'login'])->name('login');
+Route::post('/register', [App\Http\Controllers\API\AuthController::class, 'register'])->name('api.register');
+Route::post('/login', [App\Http\Controllers\API\AuthController::class, 'login'])->name('api.login');
 
 Route::group(['middleware' => 'auth:sanctum'], function(){
-    Route::post('/logout', [App\Http\Controllers\API\AuthController::class, 'logout'])->name('logout');
+    Route::post('/logout', [App\Http\Controllers\API\AuthController::class, 'logout'])->name('api.logout');
     Route::apiResource('/places', PlaceController::class);
 });
 
