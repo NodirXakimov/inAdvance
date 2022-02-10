@@ -14,17 +14,8 @@ class PlaceController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $places = Place::paginate(10);
+        return response()->json(['places' => $places]);
     }
 
     /**
@@ -45,17 +36,6 @@ class PlaceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Place $place)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Place  $place
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Place $place)
     {
         //
     }
